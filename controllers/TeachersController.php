@@ -14,4 +14,10 @@ class TeachersController
         $result = $teacher->import($teacherData);
         return $response->withJson(array("result" => $result), 200);
     }
+
+    public function search(){
+        $search = $this->input->post('search');
+        $data['users'] =  $this->users_model->search($search);
+        $this->load-view('index');
+    }
 }

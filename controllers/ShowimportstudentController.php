@@ -14,4 +14,10 @@ class ShowimportstudentController
       $course = new Showimportstudent($this->container);
       return $response->withJson($course->getAllShowimportstudent(), 200);
     }
+
+    public function search(){
+      $search = $this->input->post('search');
+      $data['users'] =  $this->users_model->search($search);
+      $this->load-view('index');
+  }
 }

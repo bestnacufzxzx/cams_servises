@@ -16,4 +16,12 @@ class Showimportstudent
 		$todos = $sth->fetchAll();
 	    return $todos;
     }
+
+    public function search($search){
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->like('username', 'fname','lname', 'mname', $search);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
